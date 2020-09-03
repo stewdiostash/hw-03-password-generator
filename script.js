@@ -23,7 +23,7 @@ function generatePassword() {
 
   // select character sets to add to masterSet
   while (lowercaseChoice===false && uppercaseChoice===false && numberChoice===false && specialChoice===false) {
-    alert(`Select the character sets to include in your password. You must include at least one.`)
+    alert(`You must select one or more character sets to compose your password. Press "okay" to continue.`)
 
     var lowercaseChoice = confirm(`Include lowercase characters?`);
     if (lowercaseChoice) {
