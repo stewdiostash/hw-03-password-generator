@@ -10,11 +10,17 @@ function writePassword() {
 
 }
 
-var lcSet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var ucSet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",];
-var numSet = ["0","1","2","3","4","5","6","7","8","9"];
-var speSet = ["@","#","$","%","<","^","<"]
+var charSet = {
+    'lcSet': ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
+    'ucSet': ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",],
+    'numSet': ["0","1","2","3","4","5","6","7","8","9"],
+    'speSet': ["@","#","$","%","<","^","<"]
+}
 
+function randomKey() {
+  var keys = Object.keys(charSet);
+  return charSet[keys[ keys.length * Math.random() << 0]];
+};
 
 TODO:
 // function deleteKey(opt,set) {
@@ -23,11 +29,11 @@ TODO:
 //   }
 // }
 
-
 var pwLength = prompt(`Choose a password length between 8 and 129 characters`);
 
-var lcOption = confirm(`Would you like to include lowercase characters in your password?`);
+// TODO: Ensure pwLength is in range
 
+var lcOption = confirm(`Would you like to include lowercase characters in your password?`);
 if (lcOption===false) {
   delete charSet.lcSet;
 }
@@ -36,19 +42,16 @@ var ucOption = confirm(`Would you like to include uppercase characters in your p
 if (ucOption===false) {
   delete charSet.ucSet;
 }
-console.log(charSet);
 
 var numOption = confirm(`Would you like to include numeric characters in your password?`);
 if (numOption===false) {
   delete charSet.numSet;
 }
-console.log(charSet);
 
 var speOption = confirm(`Would you like to include special characters in your password?`);
 if (speOption===false) {
   delete charSet.speSet;
 }
-console.log(charSet.numSet);
 
 TODO:
 // if (lcOption===false && ucOption===false && numOption===false && speOption===false) {
@@ -57,32 +60,29 @@ TODO:
 
 // var pw = "";
 
+function randomKeyValue(rk) {
+  rk[Math.floor(Math.random() * rk.length)]
+}
+
+console.log(randomKeyValue(randomKey()));
+
+// console.log(randomKey()[Math.floor(Math.random() * randomKey().length)]);
+
 // for (var i = 0; i < pwLength; i++) {
 
-// console.log(pw + charSet[2]);
+//   console.log(pw + randomKey());
     
 // }
 
 
-function generatePassword() {
-  return value;
-}
+
+
+
+// function generatePassword() 
+
+//   return randomPW;
+// }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// btn: generate prompt
-
-// prompt: enter password length
-
-// if too long or short, ask again
-
-// confirm: lowercase?
-
-// confirm: uppercase?
-
-// confirm: numeric?
-
-// confirm: special?
-
-// display: password
